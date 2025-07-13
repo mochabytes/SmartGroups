@@ -2,6 +2,7 @@ import io
 import csv
 import pandas as pd
 from constraint_parser import SchedulingConstraints
+import json
 
 def get_csv(request):
     if 'file' not in request.files:
@@ -18,9 +19,17 @@ def get_csv(request):
     return {'data': csv_input, 'status': 200}
 
 def find_name_indices(headers_lower):
+    """
+    find the indices of the name column(s); the naming conventions I allow rn are a bit limited
+    # NOTE: perhaps extend this later
+    """
     name_columns = []
     if 'name' in headers_lower:
         name_columns = [headers_lower.index('name')]
+    elif 'student name' in headers_lower:
+        name_columns = [headers_lower.index('student name')]
+    elif 'student' in headers_lower:
+        name_columns = [headers_lower.index('student')]
     elif 'firstname' in headers_lower and 'lastname' in headers_lower:
         name_columns = [headers_lower.index('firstname'), headers_lower.index('lastname')]
     elif 'first name' in headers_lower and 'last name' in headers_lower:
@@ -37,7 +46,7 @@ def find_data_attributes(headers_lower, name_indices, student_attributes):
     return attributes_indices, availabilities_indices
 
 def parse_student_data(data, given_attributes):
-    headers_lower = [str(header).lower() for header in data[0]] # first row of data is headers, make lower case
+    headers_lower = [str(header).strip().lower() for header in data[0]] # first row of data is headers, make lower case and strip whitespace
 
     # check that the name column(s) exist, and figure out which ones they are
     name_indices = find_name_indices(headers_lower)
@@ -75,10 +84,22 @@ def parse_student_data(data, given_attributes):
     new_column_order = [name_column] + attribute_columns + availability_columns
     df = df[new_column_order]
 
+    # handle empty values: replace NaN, None, and empty strings with '0' for attributes and availabilities
+    # this ensures that missing data is treated as "not available" or "doesn't have attribute"
+    for col in attribute_columns + availability_columns:
+        df.loc[:, col] = df.loc[:, col].fillna('0')  
+        df.loc[:, col] = df.loc[:, col].replace('', '0')
+        df.loc[:, col] = df.loc[:, col].astype(str)  
+
     # get the student data, attributes, availabilities
     student_names = df[name_column].tolist()  # Simple list of strings
     student_attributes = df[attribute_columns].to_dict(orient='records') if attribute_columns else []  # type: ignore
     student_availabilities = df[availability_columns].to_dict(orient='records') if availability_columns else []  # type: ignore
+
+    # check for students with no availability + return specific error for this
+    for i, avail in enumerate(student_availabilities):
+        if all(str(v).strip() == '0' for v in avail.values()):
+            return {'error': f'Student "{student_names[i]}" has no available times. Please ensure every student has at least one available time slot.', 'status': 400}
 
     return {
         'df': df,
@@ -110,30 +131,37 @@ def parse_attribute_constraints(request, given_attributes):
     return attribute_constraints
 
 def parse_all_constraints(request, num_students, num_availabilities, given_attributes):
-    # get max + min students per group if entered
+    """
+    parse the different kinds of constraints: group sizes, number of groups, counts per attribute (individual and combined)
+    """
     if 'group_size_max' in request.form:
         group_size_max = int(request.form['group_size_max'])
     else:
-        group_size_max = num_students # default max students per group to total number of students
-    
+        group_size_max = num_students
+
     if 'group_size_min' in request.form:
         group_size_min = int(request.form['group_size_min'])
     else:
-        group_size_min = 1 # default min students per group to 1
+        group_size_min = 1
 
-    # get number of groups wanted 
     if 'group_count_min' in request.form:
         group_count_min = int(request.form['group_count_min'])
     else:
-        group_count_min = 1 # default min number of groups to 1
+        group_count_min = 1
 
     if 'group_count_max' in request.form:
         group_count_max = int(request.form['group_count_max'])
     else:
-        group_count_max = num_availabilities # default maximum is number of time slots
-    
-    # get the constraints for EACH of the student attributes
+        group_count_max = num_availabilities
+
     attribute_constraints = parse_attribute_constraints(request, given_attributes)
 
-    constraints = SchedulingConstraints(attribute_constraints, group_size_min, group_size_max, group_count_min, group_count_max)
+    combined_constraints = []
+    if 'combined_constraints' in request.form:
+        try:
+            combined_constraints = json.loads(request.form['combined_constraints'])
+        except Exception:
+            combined_constraints = []
+
+    constraints = SchedulingConstraints(attribute_constraints, group_size_min, group_size_max, group_count_min, group_count_max, combined_constraints)
     return constraints

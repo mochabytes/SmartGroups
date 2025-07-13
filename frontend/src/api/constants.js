@@ -44,7 +44,7 @@ export const initializeApi = async () => {
     catch (error) {
       console.error('Failed to discover backend port:', error);
       apiConfig = {
-        BASE_URL: 'http://localhost:5000', // this is kind of a fallback, hopefully not an issue
+        BASE_URL: 'http://localhost:5013', // this is kind of a fallback, hopefully not an issue
         PORT: 5000,
         TIMEOUT: 30000,
         MAX_RETRIES: 3,

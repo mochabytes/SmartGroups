@@ -46,20 +46,20 @@ const createApiClient = () => {
 };
 
 // frontend sends a json request to the backend (realized I don't need this for now; keeping in case useful for future)
-// export const makeJsonRequest = async (method, url, data = null) => {
-//     const client = createApiClient();
-//     const config = {
-//         method,
-//         url,
-//         headers: REQUEST_HEADERS.JSON,
-//     };
-//     if (data) {
-//         config.data = data;
-//     }
+export const makeJsonRequest = async (method, url, data = null) => {
+    const client = createApiClient();
+    const config = {
+        method,
+        url,
+        headers: REQUEST_HEADERS.JSON,
+    };
+    if (data) {
+        config.data = data;
+    }
 
-//     const response = await client(config); 
-//     return response.data; 
-// }
+    const response = await client(config); 
+    return response.data; 
+}
 
 // frontend sends a form data request to the backend
 export const makeFormDataRequest = async (method, url, formData = null) => {
@@ -80,5 +80,5 @@ export const makeFormDataRequest = async (method, url, formData = null) => {
 
 // shortcuts for get, post (json), and post (formdata)
 export const get = (url) => makeJsonRequest('GET', url);
-// export const postJson = (url, data) => makeJsonRequest('POST', url, data);
+export const postJson = (url, data) => makeJsonRequest('POST', url, data);
 export const postFormData = (url, formData) => makeFormDataRequest('POST', url, formData);

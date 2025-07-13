@@ -57,7 +57,7 @@ const checkFile = (file) => {
     }
 
     // if file extension not csv
-    const extension = file.name.split('.').pop().toLowerCase();
+    const extension = '.' + file.name.split('.').pop().toLowerCase();
     if (!UPLOAD_CONFIG.ALLOWED_EXTENSIONS.includes(extension)) {
         throw new Error(ERROR_MESSAGES.INVALID_FILE_FORMAT);
     }
@@ -67,13 +67,14 @@ const checkFile = (file) => {
 
 // upload the file and the constraints formdata to the backend
 export const uploadFileAndConstraints = async (file, constraints = {}) => {
+    await initializeApi(); // Ensure API is initialized before proceeding
     try {
         const formData = new FormData(); // all the constraints + file
         
         checkFile(file);  // check file
         formData.append('file', file); // add file if it passes check
 
-        // user MUST input attributes; append these attributes
+        // append attributes (can be empty string if no attributes provided)
         formData.append('given_attributes', constraints.givenAttributes);  // request.form['given_attributes']
 
         // add the group size constraints
@@ -96,12 +97,15 @@ export const uploadFileAndConstraints = async (file, constraints = {}) => {
         if (constraints.attributeConstraints) {
             Object.entries(constraints.attributeConstraints).forEach(([attr, attrConstraints]) => {
                 if (attrConstraints.minPerGroup !== undefined) {
-                    formData.append(`${attr}_min_per_group`, attrConstraints.minPerGroup.toString());  // request.form[f'{attr}_min_per_group']
+                    formData.append(`${attr}_min_per_group`, attrConstraints.minPerGroup.toString());
                 }
                 if (attrConstraints.maxPerGroup !== undefined) {
-                    formData.append(`${attr}_max_per_group`, attrConstraints.maxPerGroup.toString());  // request.form[f'{attr}_max_per_group']
+                    formData.append(`${attr}_max_per_group`, attrConstraints.maxPerGroup.toString());
                 }
             });
+        }
+        if (constraints.combinedConstraints && constraints.combinedConstraints.length > 0) {
+            formData.append('combined_constraints', JSON.stringify(constraints.combinedConstraints));
         }
 
         // show what's sent to backend
@@ -123,17 +127,25 @@ export const uploadFileAndConstraints = async (file, constraints = {}) => {
 
     } 
     catch (error) {
-        // handle file validation errors
-        if (error.message.includes('file') || error.message.includes('File')) {
-            throw error;
+        // Try to extract the most specific error message possible
+        let errorMsg = null;
+        if (error.response) {
+            if (error.response.data) {
+                if (typeof error.response.data === 'string') {
+                    errorMsg = error.response.data;
+                } else if (error.response.data.error) {
+                    errorMsg = error.response.data.error;
+                } else {
+                    errorMsg = JSON.stringify(error.response.data);
+                }
+            }
         }
-        
-        // handle backend errors
-        if (error.response?.data?.error) {
-            throw new Error(error.response.data.error);
+        if (!errorMsg && error.message) {
+            errorMsg = error.message;
         }
-        
-        // other errors
-        throw new Error(ERROR_MESSAGES.FILE_UPLOAD_ERROR);
+        if (!errorMsg) {
+            errorMsg = ERROR_MESSAGES.FILE_UPLOAD_ERROR;
+        }
+        throw new Error(errorMsg);
     }
 }

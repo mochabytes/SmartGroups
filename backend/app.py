@@ -27,7 +27,7 @@ def upload_csv():
         # check for student attributes (if they exist)
         given_attributes = []
         if request.form.get('given_attributes'):
-            given_attributes = [attr.lower() for attr in request.form['given_attributes'].split(',')]
+            given_attributes = [attr.strip().lower() for attr in request.form['given_attributes'].split(',')]
         
         # get the data as df
         data = csv_input['data'] # get the data
@@ -61,20 +61,24 @@ def upload_csv():
 def health_check():
     return jsonify({'status': 'smart groups is running / works'})
 
-def find_available_port(start_port=5000):
-    """find the first available port starting from start_port"""
-    port = start_port
-    while port < 65535:  # max port number lol
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                s.bind(('localhost', port))
-                return port
-        except OSError:
-            port += 1
-    raise RuntimeError("No available ports found")
+# def find_available_port(start_port=5000):
+#     """find the first available port starting from start_port"""
+#     port = start_port
+#     while port < 65535:  # max port number lol
+#         try:
+#             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+#                 s.bind(('localhost', port))
+#                 return port
+#         except OSError:
+#             port += 1
+#     raise RuntimeError("No available ports found")
 
 if __name__ == '__main__':
-    port = find_available_port() # find first available port
+    port = 5013 #find_available_port() # find first available port
+    
+    import os
+    os.makedirs('../frontend/src/', exist_ok=True)
+    
     with open('../frontend/src/backend-port.txt', 'w') as f:
         f.write(str(port))
 

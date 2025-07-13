@@ -1,0 +1,316 @@
+.constraint-form-container {
+    padding: 20px;
+    border: 2px solid #63378a;
+    border-radius: 8px;
+    background-color: #f8f0ff;
+}
+
+.constraint-form-title {
+    margin: 0 0 20px 0;
+    color: #4c0767;
+    text-align: center;
+}
+
+.attributes-step {
+    text-align: center;
+}
+
+.file-info {
+    margin-bottom: 20px;
+    color: #4c0767;
+}
+
+.attributes-input {
+    width: 100%;
+    max-width: 700px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 2px solid #e3d2ea;
+    font-size: 14px;
+}
+
+.attributes-input:focus {
+    outline: none;
+    border-color: #63378a;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary {
+    background-color: #a273cb;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #b598ce;
+}
+
+.btn-primary {
+    background-color: #380369;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #502d70;
+}
+
+.btn-primary:disabled {
+    background-color: #ad9caf;
+    cursor: not-allowed;
+}
+
+/* .constraints-step {
+} */
+
+.file-attributes-summary {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fcdef5;
+    border-radius: 6px;
+}
+
+.constraints-section {
+    margin-bottom: 20px;
+}
+
+.constraints-section h4 {
+    margin: 0 0 15px 0;
+    color: #423751;
+}
+
+.constraint-inputs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.constraint-input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    flex: 1;
+}
+
+.constraint-input:focus {
+    outline: none;
+    border-color: #451172;
+}
+
+.attribute-constraint {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #e0e7ff;
+    border-radius: 6px;
+}
+
+.attribute-constraint h5 {
+    margin: 0 0 10px 0;
+    color: #374151;
+    font-size: 16px;
+}
+
+.attribute-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.no-attributes-message {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.no-attributes-message p {
+    margin: 0;
+    color: #92400e;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.final-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.combined-constraint-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.combined-constraint-attributes {
+    min-width: 120px;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #fff;
+}
+.add-combined-btn {
+    margin-top: 8px;
+    padding: 6px 16px;
+    font-size: 18px;
+    border-radius: 50%;
+    background-color: #bbf7d0;
+    color: #047857;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.add-combined-btn:hover {
+    background-color: #a7f3d0;
+    color: #065f46;
+}
+
+.combined-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-right: 10px;
+}
+.combined-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #c9e7dc !important;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 14px;
+}
+.combined-checkbox-label input[type="checkbox"] {
+    accent-color: #a7d7c6;
+    background-color: #a7d7c6;
+    border-radius: 4px;
+    transition: none;
+}
+.combined-checkbox-label input[type="checkbox"]:hover {
+    accent-color: #a7d7c6;
+    background-color: #a7d7c6;
+}
+.combined-checkbox-label input[type="checkbox"]:checked {
+    accent-color: #7fc8a9;
+    background-color: #7fc8a9;
+}
+.delete-combined-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: none;
+    border-radius: 6px;
+    width: 36px;
+    height: 32px;
+    font-size: 22px;
+    cursor: pointer;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    box-shadow: none;
+    font-weight: bold;
+}
+.delete-combined-btn:hover {
+    background: #fecaca;
+    color: #7f1d1d;
+}
+
+@media (max-width: 640px) {
+    .constraint-inputs,
+    .attribute-inputs {
+        flex-direction: column;
+    }
+    
+    .constraint-input {
+        width: 100%;
+    }
+    
+    .final-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+        margin: 5px 0;
+    }
+}
+
+.royal-blue-box {
+    border: 2.5px solid #e5e7eb !important;
+    background-color: #fcfcfd !important;
+    color: #6b7280 !important;
+}
+
+.royal-blue-box * {
+    color: #6b7280 !important;
+}
+
+.royal-blue-box .btn,
+.royal-blue-box .btn-primary,
+.royal-blue-box .btn-secondary {
+    color: white !important;
+}
+
+.light-pink-box {
+    background-color: #fff0f6 !important;
+    border: 1.5px solid #ffd6e7 !important;
+}
+
+.purple-box, .attribute-constraints-section, .attribute-constraint {
+    background-color: #eff6ff !important;
+    border: 1.5px solid #bae6fd !important;
+}
+
+.group-size-section, .group-count-section {
+    background-color: #f5f3ff !important;
+    border: 1.5px solid #e9d5ff !important;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.final-buttons .btn-primary {
+    background-color: #451172 !important;
+    color: white !important;
+}
+.final-buttons .btn-primary:hover {
+    background-color: #5b1a85 !important;
+}
+.final-buttons .btn-secondary {
+    background-color: #b598ce !important;
+    color: white !important;
+}
+.final-buttons .btn-secondary:hover {
+    background-color: #4b5563 !important;
+}
+
+.group-size-section .constraint-input,
+.group-count-section .constraint-input {
+    border: 2px solid #ede9fe !important;
+}
+
+.attribute-constraint .constraint-input {
+    border: 2px solid #e0e7ef !important;
+}
+
+.combined-constraint-row .constraint-input {
+    border: 2px solid #d1fae5 !important;
+} 

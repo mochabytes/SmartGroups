@@ -1,0 +1,20 @@
+.export-download-button {
+    padding: 12px 24px;
+    background-color: #ccf0e3;
+    color: #014d43;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 300;
+    transition: background-color 0.2s ease;
+}
+
+.export-download-button:hover {
+    background-color: #97cbc0;
+    color: #014d43;
+}
+
+.export-download-button:active {
+    background-color: #2a0b47;
+} 

@@ -108,27 +108,56 @@ class GroupScheduler:
         attribute_constraints = self.constraints.get_attribute_constraints()
         for attr, constraints in attribute_constraints.items():
             for g in range(max_groups):
-                # count students with this attribute in group g
                 group_attr_count = sum(student_in_group[s][g] for s in range(self.num_students) 
                                if self._get_student_attribute(s, attr))
-                
                 if 'min_per_group' in constraints:
                     model.Add(group_attr_count >= constraints['min_per_group']).OnlyEnforceIf(group_active[g])
-                
                 if 'max_per_group' in constraints:
                     model.Add(group_attr_count <= constraints['max_per_group']).OnlyEnforceIf(group_active[g])
+
+        # 7. combined attribute constraints! added this in case individual constraints are not expressive enough
+        combined_constraints = self.constraints.get_combined_constraints()
+        for combined in combined_constraints:
+            attrs = combined.get('attributes', [])
+            min_val = combined.get('min')
+            max_val = combined.get('max')
+            for g in range(max_groups):
+                group_combined_count = sum(
+                    student_in_group[s][g]
+                    for s in range(self.num_students)
+                    if any(self._get_student_attribute(s, attr) for attr in attrs)
+                )
+                if min_val is not None:
+                    model.Add(group_combined_count >= min_val).OnlyEnforceIf(group_active[g])
+                if max_val is not None:
+                    model.Add(group_combined_count <= max_val).OnlyEnforceIf(group_active[g])
         
-        # solve
+        # solve for best solution
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
         
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
             return self._format_solution(solver, student_in_group, group_uses_time, group_active, max_groups)
         else:
-            return {'error': 'No valid solution found with the given constraints'}
+            # detailed error reporting to help user adjust their constraints
+            reasons = []
+            if self.constraints.group_size_min > self.num_students:
+                reasons.append(f"Minimum group size ({self.constraints.group_size_min}) is greater than the number of students ({self.num_students}).")
+            if self.constraints.group_count_max and self.constraints.group_count_max < self.constraints.group_count_min:
+                reasons.append(f"Maximum group count ({self.constraints.group_count_max}) is less than the minimum group count ({self.constraints.group_count_min}).")
+            # attribute constraints issues
+            for attr, cons in self.constraints.get_attribute_constraints().items():
+                count_with_attr = sum(1 for s in self.student_data['attributes'] if str(s.get(attr, 0)) == '1')
+                if 'min_per_group' in cons and count_with_attr < cons['min_per_group'] * self.constraints.group_count_min:
+                    reasons.append(f"Not enough students with attribute '{attr}' to satisfy the minimum per group ({cons['min_per_group']}).")
+                if 'max_per_group' in cons and cons['max_per_group'] < 1:
+                    reasons.append(f"Maximum per group for attribute '{attr}' is less than 1.")
+            if not reasons:
+                reasons.append("The combination of constraints may be too strict or incompatible with the data.")
+            return {'error': 'No valid solution found with the given constraints. Possible reasons: ' + ' '.join(reasons)}
     
     def _format_solution(self, solver, student_in_group, group_uses_time, group_active, max_groups):
-        """Format the solution into the expected output format"""
+        """format the solution into group ids, time slots they're assigned to, students in each group"""
         groups = []
         
         for g in range(max_groups):
