@@ -39,6 +39,7 @@ def upload_csv():
         student_names = results['student_names']
         student_attributes = results['student_attributes']
         student_availabilities = results['student_availabilities']
+        unassigned_students = results['unassigned_students']
 
         constraints = parse_all_constraints(request, len(df), len(student_availabilities[0]), given_attributes)
 
@@ -51,6 +52,25 @@ def upload_csv():
         
         scheduler = GroupScheduler(student_data, constraints)
         schedule = scheduler.schedule()
+
+        # add unassigned students to the response if any exist
+        if 'error' not in schedule and unassigned_students:
+            groups_list = list(schedule.get('groups', []))  # type: ignore
+            
+            # add unassigned group
+            groups_list.append({  # type: ignore
+                'group_id': len(groups_list) + 1,
+                'time_slot': 'Unassigned - no availabilities',
+                'students': unassigned_students,
+                'size': len(unassigned_students),
+                'is_unassigned': True
+            })
+            
+            schedule['groups'] = groups_list  # type: ignore
+            
+            # update total students count
+            total_students = int(schedule.get('total_students', 0))
+            schedule['total_students'] = total_students + len(unassigned_students)  # type: ignore
 
         return jsonify(schedule)
     

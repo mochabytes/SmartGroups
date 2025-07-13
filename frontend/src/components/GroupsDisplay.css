@@ -98,4 +98,28 @@
     font-size: 12px;
     color: #008080; 
     margin-top: 2px;
+}
+
+/* Unassigned group styling */
+.unassigned-group-card {
+    border: 2px solid #f59e0b !important;
+    background-color: #fffbeb !important;
+}
+
+.unassigned-group-card .group-title {
+    color: #b45309 !important;
+}
+
+.unassigned-student-item {
+    background-color: #fef3c7 !important;
+    border-left: 4px solid #f59e0b;
+}
+
+.unassigned-notice {
+    background-color: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 14px;
 } 

@@ -96,16 +96,37 @@ def parse_student_data(data, given_attributes):
     student_attributes = df[attribute_columns].to_dict(orient='records') if attribute_columns else []  # type: ignore
     student_availabilities = df[availability_columns].to_dict(orient='records') if availability_columns else []  # type: ignore
 
-    # check for students with no availability + return specific error for this
+    # filter out students with no availability and track them separately
+    filtered_names = []
+    filtered_attributes = []
+    filtered_availabilities = []
+    unassigned_students = []
+    
     for i, avail in enumerate(student_availabilities):
         if all(str(v).strip() == '0' for v in avail.values()):
-            return {'error': f'Student "{student_names[i]}" has no available times. Please ensure every student has at least one available time slot.', 'status': 400}
+            # student has no availability - add to unassigned list
+            unassigned_students.append({
+                'name': student_names[i],
+                'attributes': student_attributes[i] if student_attributes else {},
+                'availabilities': avail
+            })
+        else:
+            # student has availability - include in filtered data
+            filtered_names.append(student_names[i])
+            if student_attributes:
+                filtered_attributes.append(student_attributes[i])
+            filtered_availabilities.append(avail)
+    
+    # if no students have availability, return error
+    if not filtered_names:
+        return {'error': 'No students have any available times. Please ensure at least one student has available time slots.', 'status': 400}
 
     return {
         'df': df,
-        'student_names': student_names,
-        'student_attributes': student_attributes,
-        'student_availabilities': student_availabilities,
+        'student_names': filtered_names,
+        'student_attributes': filtered_attributes,
+        'student_availabilities': filtered_availabilities,
+        'unassigned_students': unassigned_students,
     }
 
 def parse_attribute_constraints(request, given_attributes):
