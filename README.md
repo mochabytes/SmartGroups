@@ -28,7 +28,7 @@ SmartGroups lets you upload a CSV file containing a list of names/identifiers, o
 3. **Run the App**
    - On Mac/Linux:
      ```sh
-     cd ~/smartgroups
+     cd ~/smartgroups-main
      ./run.sh
      ```
    - On Windows:
