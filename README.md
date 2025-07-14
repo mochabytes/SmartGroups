@@ -15,10 +15,10 @@ SmartGroups lets you upload a CSV file containing a list of names/identifiers, o
    - Unzip the downloaded file
    - Move it from Downloads to your home directory (i.e. the folder that contains Downloads). You can do this by just moving the file in your Finder/File Explorer.
    - On Mac, you can also do this by pressing Cmd + Space and typing terminal, then pressing enter. Then run the following commands:
-         ```
-         cd ~
-         mv ~/Downloads/SmartGroups-main .
-         ```
+     ```sh
+     cd ~
+     mv ~/Downloads/SmartGroups-main .
+     ```
 
 2. **Install Requirements**
    - Make sure you have Python 3 and Node.js installed on your system.
