@@ -94,7 +94,7 @@ def parse_student_data(data, given_attributes):
         df.loc[:, col] = df.loc[:, col].astype(str)  
 
     # get the student data, attributes, availabilities
-    student_names = df[name_column].tolist()  # Simple list of strings
+    student_names = df[name_column].tolist()  
     student_attributes = df[attribute_columns].to_dict(orient='records') if attribute_columns else []  # type: ignore
     student_availabilities = df[availability_columns].to_dict(orient='records') if availability_columns else []  # type: ignore
 
