@@ -66,7 +66,7 @@ SmartGroups lets you upload a CSV file containing a list of names/identifiers, o
 - Individual attribute requirements per group
 - Combined group attribute constraints (e.g. I want at most/least X number of people who have attribute A or B or C per group)
 
-## How SmartGroups Solves Grouping
+## How SmartGroups Makes Groups
 Right now, SmartGroups uses Google's OR-Tools SAT solver (a type of constraint programming solver), which is specifically designed for boolean satisfiability and general constraint satisfaction problems.
 
 ## Error messages
