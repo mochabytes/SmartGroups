@@ -22,21 +22,21 @@ const Instructions = () => {
                 <div className="instruction-item">
                     <span className="instruction-number">2</span>
                     <p className="instruction-text">
-                        <strong>Specify attributes</strong> - Enter comma-separated binary attributes from your CSV (e.g., "gender, experience, department"). Please list any columns in the csv that are NOT names or time availabilities here.<br/>
+                        <strong>Specify attributes</strong> - Please enter EVERY column name in your csv that is not name(s) or an availabilities here. <br/>
                     </p>
                 </div>
                 
                 <div className="instruction-item">
                     <span className="instruction-number">3</span>
                     <p className="instruction-text">
-                        <strong>Set constraints</strong> - Define group sizes and attribute distributions (all optional - leave blank for no constraints)
+                        <strong>Set constraints</strong> - Define group sizes and attribute distributions (all optional - leave blank for no constraints). Please note that you can only set constraints on attributes that have binary values in the columns.
                     </p>
                 </div>
                 
                 <div className="instruction-item">
                     <span className="instruction-number">4</span>
                     <p className="instruction-text">
-                        <strong>Generate & download</strong> - View your optimized groups and optionally download the results as CSV
+                        <strong>Generate & download</strong> - View your optimized groups and optionally download the results as a csv (this will be your original csv with 2 new columns: Assigned Group, and Assigned Time Slot).
                     </p>
                 </div>
             </div>

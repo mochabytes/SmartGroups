@@ -89,6 +89,8 @@ def parse_student_data(data, given_attributes):
     for col in attribute_columns + availability_columns:
         df.loc[:, col] = df.loc[:, col].fillna('0')  
         df.loc[:, col] = df.loc[:, col].replace('', '0')
+        # convert Yes/yes/True/true to 1 and No/no/False/false to 0
+        df.loc[:, col] = df.loc[:, col].replace({'Yes': '1', 'yes': '1', 'No': '0', 'no': '0', 'True': '1', 'False': '0', 'true': '1', 'false': '0'})
         df.loc[:, col] = df.loc[:, col].astype(str)  
 
     # get the student data, attributes, availabilities
