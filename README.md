@@ -1,5 +1,5 @@
 # SmartGroups
-I built this app for my mom, a business school professor who was spending hours manually creating student groups with very specific constraints. It was also my chance to finally prove to her that studying computer science can actually make me useful (to her)!
+I built this app for my mom, a business school professor who was spending hours manually creating student groups with very specific constraints. With this app, she can now do it in seconds. It was also my chance to finally prove to her that studying computer science can actually make me a useful member of society (to her)!
 
 SmartGroups is a simple, locally-deployable web app designed to help educators and organizers quickly create student groups or meeting schedules based on time constraints and some desired group attributes. This project was inspired by the challenge of manually scheduling groups of students with specific requirements — somehow, ChatGPT is terrible at handling scheduling tasks with even a few constraints and available scheduling tools are a major pain.
 
@@ -79,8 +79,13 @@ If you have suggestions or want to contribute, please open a PR or email themoch
 
 ## Preview of how it looks:
 
-![Homepage](screenshots/homepage.png)
-![Attributes](screenshots/attributes.png)
-![Constraints](screenshots/constraints.png)
-![Groups](screenshots/group_results.png)
+![Homepage](examples/screenshots/homepage.png)
+![Attributes](examples/screenshots/attributes.png)
+![Constraints](examples/screenshots/constraints.png)
+![Groups](examples/screenshots/group_results.png)
+And if some of the students are missing availabilities, it will tell you and create an "Unassigned" group that you may handle however you wish:
+![MissingAvailabilitiesMessage](examples/screenshots/missing_availabilities_message.png)
+![Unassigned](examples/screenshots/unassigned.png)
+
+Examples of input sheets and the corresponding results are available under examples/sample_input_sheets. Sample output CSVs are under examples/sample_result_sheets.
 

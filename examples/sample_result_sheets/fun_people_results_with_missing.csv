@@ -1,0 +1,42 @@
+Student Name,Assigned Group,Assigned Time Slot,finance,healthcare,marketing,technology,fridays after 8 pm only,fridays between 5 -8 pm,mondays after 8 pm only,mondays between 5 - 8 pm,saturday after 8 pm only,saturday early afternoons (between 12 pm - 3 pm),saturday evenings (between 6 - 8 pm),saturday late afternoons (between 3 - 6 pm),saturday mornings (between 9 am - 12 pm),sunday after 8 pm only,sunday early afternoons (between 12 pm - 3 pm),sunday evenings (between 6 - 8 pm),sunday late afternoons (between 3 - 6 pm),sunday mornings (between 9 am - 12 pm),thursdays after 8 pm only,thursdays between 5-8 pm,wednesdays after 8 pm only,wednesdays between 5 -8 pm
+"Thackery Earwicket","Group 1","sunday evenings (between 6 - 8 pm)",0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,1,0,0,1,0,1
+"Neville Longbottom","Group 1","sunday evenings (between 6 - 8 pm)",0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1
+"Jason Grace","Group 1","sunday evenings (between 6 - 8 pm)",0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,1,0,1,0,0,0,0
+"Annabeth Chase","Group 2","mondays between 5 - 8 pm",0,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,0,0,0,1,0,1
+"Frank Zhang","Group 2","mondays between 5 - 8 pm",0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0
+"Ethan Nakamura","Group 3","fridays between 5 -8 pm",0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+"Piper McLean","Group 4","wednesdays after 8 pm only",0,0,0,0,0,0,0,0,0,1,0,0,1,1,1,1,1,1,0,0,1,0
+"Hazel Levesque","Group 5","wednesdays after 8 pm only",0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0
+"Red Queen","Group 6","mondays between 5 - 8 pm",0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0
+"Sirius Black","Group 6","mondays between 5 - 8 pm",0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Knave Ofhearts","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,0,0,1,0,0,0,1,1,1,1,0,1,1,1,1,0,1,0,1
+"Albus Dumbledore","Group 7","saturday late afternoons (between 3 - 6 pm)",0,1,0,0,0,1,1,0,1,0,1,1,0,1,1,1,1,0,1,1,1,0
+"Draco Malfoy","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,0,0,0,0,1,0,1,0,1,1,0,1,0,1,1,0,1,0,1
+"Lord Voldemort","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1
+"Luna Lovegood","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,1,1,0,0,1,0,0
+"Minerva McGonagall","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,1,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,1,1
+"Cedric Diggory","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,0,1,1,0,0,0,1,0,1,1,0,1,0,1,1,1,0,1,0
+"Percy Jackson","Group 7","saturday late afternoons (between 3 - 6 pm)",0,1,0,0,0,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1
+"Leo Valdez","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,1,0,0,0,0,1,0,1,0,1,1,0,1,0,1,1,1,0,1,0
+"Charles Beckendorf","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,1,0,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1
+"Bianca Diangelo","Group 7","saturday late afternoons (between 3 - 6 pm)",0,0,0,0,0,1,0,1,0,1,0,1,1,0,1,1,1,1,0,1,0,1
+"Tweedle Dee","Group 8","mondays after 8 pm only",0,1,0,0,1,0,1,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0
+"Tweedle Dum","Group 8","mondays after 8 pm only",0,0,1,0,0,0,1,1,0,0,0,0,0,1,1,1,1,0,1,1,1,1
+"Allison Wonderland","Group 8","mondays after 8 pm only",0,1,0,0,0,0,1,1,0,1,0,1,1,0,1,1,1,1,1,1,1,1
+"Mad Hatter","Group 8","mondays after 8 pm only",0,0,0,0,0,1,1,1,0,0,0,0,0,1,0,1,1,0,1,1,1,1
+"White Queen","Group 8","mondays after 8 pm only",0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0
+"Tarrant Hightopp","Group 8","mondays after 8 pm only",0,0,0,1,1,1,1,1,0,0,0,0,0,1,0,1,1,0,1,1,1,1
+"Harry Potter","Group 8","mondays after 8 pm only",0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1
+"Hermione Granger","Group 8","mondays after 8 pm only",0,1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,1,1,1,1,1
+"Ron Weasley","Group 8","mondays after 8 pm only",0,1,0,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0
+"Severus Snape","Group 8","mondays after 8 pm only",1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,1,0,1,0
+"Dolores Umbridge","Group 8","mondays after 8 pm only",0,0,0,1,1,0,1,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0
+"Luke Castellan","Group 8","mondays after 8 pm only",1,0,0,0,0,0,1,1,0,0,0,0,1,0,1,0,0,1,0,1,1,1
+"Nico Diangelo","Group 8","mondays after 8 pm only",0,0,0,0,1,1,1,1,0,0,1,1,0,0,0,1,1,0,1,1,1,1
+"Grover Underwood","Group 8","mondays after 8 pm only",0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,1,1,0
+"Thalia Grace","Group 8","mondays after 8 pm only",0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+"Will Solace","Group 8","mondays after 8 pm only",0,0,0,1,0,0,1,1,0,0,0,0,1,1,1,1,1,1,0,0,1,1
+"Cheshire Cat","Unassigned - no availabilities","Unassigned - no availabilities",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Rachel Dare","Unassigned - no availabilities","Unassigned - no availabilities",0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ethan Hunt","Unassigned - no availabilities","Unassigned - no availabilities",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Benji Dunn","Unassigned - no availabilities","Unassigned - no availabilities",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
