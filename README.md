@@ -1,7 +1,9 @@
 # SmartGroups
 I built this app for my mom, a business school professor who was spending hours manually creating student groups with very specific constraints. With this app, she can now do it in seconds. It was also my chance to finally prove to her that studying computer science can make me a useful member of society (at least to her)!
 
-SmartGroups is a simple, locally-deployable web app designed to help educators and organizers quickly create student groups or meeting schedules based on time constraints and some desired group attributes. This project was inspired by the challenge of manually scheduling groups of students with specific requirements — somehow, ChatGPT is terrible at handling scheduling tasks with even a few constraints and available scheduling tools are a major pain. It runs completely on your own computer with no access to the internet (instead of as a hosted web app), in order to ensure that all data you upload about students / subjects is completely contained on your device.
+SmartGroups is a simple, locally-deployable web app designed to help educators and organizers quickly create student groups or meeting schedules based on time constraints and some desired group attributes. This project was inspired by the challenge of manually scheduling groups of students with specific requirements — somehow, ChatGPT is terrible at handling scheduling tasks with even a few constraints and available scheduling tools are a major pain. 
+
+It runs completely on your own computer with no access to the internet (instead of as a hosted web app), in order to ensure that all data you upload about students / subjects is completely contained on your device.
 
 ## What is SmartGroups?
 SmartGroups lets you upload a CSV file containing a list of names/identifiers, optional binary attributes, and binary availabilities. The app then forms groups that satisfy your specified constraints, making scheduling and group creation fast and friendly. There are some simple guidelines to structure your CSV for input (detailed below) — if you work with Excel or Google Sheets, however, it should be very simple to export as a CSV.
