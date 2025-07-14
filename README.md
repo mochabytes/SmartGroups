@@ -85,8 +85,9 @@ If you have suggestions or want to contribute, please open a PR or email themoch
 ![Attributes](examples/screenshots/attributes.png)
 ![Constraints](examples/screenshots/constraints.png)
 ![Groups](examples/screenshots/group_results.png)
-And if some of the students are missing availabilities, it will tell you and create an "Unassigned" group that you may handle however you wish:
+And if some of the students are missing availabilities, it will tell you...
 ![MissingAvailabilitiesMessage](examples/screenshots/missing_availabilities_message.png)
+...and create an "Unassigned" group that you may handle however you wish:
 ![Unassigned](examples/screenshots/unassigned.png)
 
 Examples of input sheets and the corresponding results are available under examples/sample_input_sheets. Sample output CSVs are under examples/sample_result_sheets.
