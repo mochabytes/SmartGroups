@@ -52,7 +52,7 @@ SmartGroups lets you upload a CSV file containing a list of names/identifiers, o
 ## Data Format Guidelines
 - **CSV File:**
   - Each row should represent a participant (e.g., student).
-  - Include columns for names/identifiers, any binary attributes (e.g., attribute: possess it: 1/ does not: 0), and availability (e.g., available: 1/unavailable: 0).
+  - Include columns for names/identifiers, any binary attributes (e.g., attribute: possess it: 1/ does not: 0), and availability (e.g., available: 1/unavailable: 0). The binary format supports Yes/yes/True/true as 1 and No/no/False/false as 0 as well.
 - **Naming Rules:**
   - Use clear, unique identifiers for each participant.
 - **Attribute Rules:**
